@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const { URLSearchParams } = require('url');
 class proxycheck {
 	/**
 	 * @typedef {Object} proxycheck_Constructor
@@ -34,13 +35,19 @@ class proxycheck {
 	/**
 	 *  Assigns the command executor function to the callback provided.
 	 *
-	 * @param {String} ip - Ip to check
+	 * @param {String|String[]} ip - Ip to check
 	 * @param {proxycheck_Options} options - Ip to check
 	 * @returns {Object} Command Class.
 	 */
 	async check(ip, options) {
 		if(!options) options = {};
-		let url = 'http://proxycheck.io/v2/' + ip + '?key=' + this.api_key;
+		let url;
+		if(Array.isArray(ip)) {
+			url = 'http://proxycheck.io/v2/' + '?key=' + this.api_key;
+		}
+		else {
+			url = 'http://proxycheck.io/v2/' + ip + '?key=' + this.api_key;
+		}
 		if(options.vpn) url += '&vpn=1';
 		if(options.asn) url += '&asn=1';
 		if(options.node) url += '&node=1';
@@ -51,7 +58,18 @@ class proxycheck {
 		if(options.seen) url += '&seen=1';
 		if(options.days) url += '&days=' + options.days;
 		if(options.tag) url += '&tag=' + options.tag;
-		return fetch(url).then(res => res.json());
+		if(Array.isArray(ip)) {
+			console.log(url);
+
+			const params = new URLSearchParams();
+			params.append('ips', ip.join(','));
+
+			return fetch(url, { method: 'POST', body: params })
+				.then(res => res.json());
+		}
+		else {
+			return fetch(url).then(res => res.json());
+		}
 	}
 }
 module.exports = proxycheck;

@@ -10,25 +10,41 @@ npm i proxycheck-node.js
 ```
 
 # Usage
-## async/await
+## One IP
+### async/await
 ```js
 const proxy_check = require('proxycheck-node.js'); 
-const check = new proxy_check({api_key: '123'}); 
+const check = new proxy_check({api_key: '798999-nc1992-m5507l-v9606u'}); 
 const result = await check.check('127.0.0.1');
 console.log(result)
 ```
-## .then
+### .then
 ```js
 const proxy_check = require('proxycheck-node.js'); 
-const check = new proxy_check({api_key: '123'}); 
+const check = new proxy_check({api_key: '798999-nc1992-m5507l-v9606u'}); 
 const result = check.check('127.0.0.1').then(result => console.log(result));
 ```
-## async/await with options
+### async/await with options
 ```js
 const proxy_check = require('proxycheck-node.js'); 
-const check = new proxy_check({api_key: '123'}); 
+const check = new proxy_check({api_key: '798999-nc1992-m5507l-v9606u'}); 
 const result = await check.check('127.0.0.1', { vpn: true });
 console.log(result)
+```
+## Multiple IPs
+### async/await with options
+```js
+const proxy_check = require('proxycheck-node.js'); 
+const check = new proxy_check({api_key: '798999-nc1992-m5507l-v9606u'}); 
+const result = await check.check(['8.8.8.8', '1.1.1.1'], { vpn: true });
+console.log(result)
+```
+```js
+{
+  status: 'ok',
+  '8.8.8.8': { proxy: 'no' },
+  '1.1.1.1': { proxy: 'no' }
+}
 ```
 
 ## Service Limits ##
