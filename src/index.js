@@ -30,10 +30,9 @@ class proxycheck {
 	 * @property {Boolean} [seen=false] - When the seen flag is supplied we will display to you the most recent time we saw this IP Address operating as a proxy server.
 	 * @property {Number} [days=7] - When the days flag is supplied we will restrict our proxy results to between now and the amount of days you specify. For example if you supplied &days=2 we would only check our database for Proxies that we saw within the past 48 hours. By default without this flag supplied we search within the past 7 days.
 	 * @property {String} [tag] - When the tag flag is supplied we will tag your query with the message you supply.
-
 	 */
 	/**
-	 *  Assigns the command executor function to the callback provided.
+	 *  Checks IP(s) with the proxycheck v2 api.
 	 *
 	 * @param {String|String[]} ip - Ip to check
 	 * @param {proxycheck_Options} options - Ip to check
