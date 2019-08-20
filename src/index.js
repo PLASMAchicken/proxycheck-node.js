@@ -7,7 +7,9 @@ class proxycheck {
 	 * @property {string} api_key - The Api Key
 	 */
 	/**
-	 *
+	 * @example
+	 * const proxy_check = require('proxycheck-node.js');
+	 * const check = new proxy_check({api_key: '798999-nc1992-m5507l-v9606u'});
 	 * @param {cmdConstructor} param0 - Constructor.
 	 */
 	constructor({
@@ -35,7 +37,14 @@ class proxycheck {
 	 *  Checks IP(s) with the proxycheck v2 api.
 	 *
 	 * @param {String|String[]} ip - Ip to check
-	 * @param {proxycheck_Options} options - Ip to check
+	 * @param {proxycheck_Options} options - Options for the IP_check
+	 * @example
+	 * const check = new proxy_check({api_key: '798999-nc1992-m5507l-v9606u'});
+	 * const result = await check.check(['8.8.8.8', '1.1.1.1'], { vpn: true });
+	 * console.log(result)
+	 * @example
+	 * const check = new proxy_check({api_key: '798999-nc1992-m5507l-v9606u'});
+	 * const result = check.check('8.8.8.8', { vpn: true }).then(result => console.log(result))
 	 * @returns {Object} Command Class.
 	 */
 	async check(ip, options) {
@@ -70,5 +79,83 @@ class proxycheck {
 			return fetch(url).then(res => res.json());
 		}
 	}
+	/**
+	 * @typedef {Object} proxycheck_getUsageReturn
+	 *
+	 * @property {String} [error] - Error?
+	 * @property {Number} [queries_today]
+	 * @property {Number} [daily_limit]
+	 * @property {Number} [queries_total]
+	 * @property {String} [plan_tier]
+	 */
+	/**
+	 * Dashboard: Gets your Usage
+	 * @example
+	 * const check = new proxy_check({ api_key: '798999-nc1992-m5507l-v9606u' });
+	 * const result = await check.getUsage();
+	 * console.log(result);
+	 * @returns {proxycheck_getUsageReturn} Result
+	 */
+	async getUsage() {
+		const url = 'https://proxycheck.io/dashboard/export/usage/' + '?key=' + this.api_key;
+		return fetch(url)
+			.then(res => res.json().then(x => convert(x)));
+	}
+	/**
+	 * Dashboard: Gets your Querys
+	 * @example
+	 * const check = new proxy_check({ api_key: '798999-nc1992-m5507l-v9606u' });
+	 * const result = await check.getQuerys();
+	 * console.log(result);
+	 * @returns {Object} Result
+	 */
+	async getQuerys() {
+		const url = 'https://proxycheck.io/dashboard/export/queries/?json=1&key=' + this.api_key;
+		return fetch(url)
+			.then(res => res.json());
+	}
+	/**
+	 * @typedef {Object} proxycheck_getDetectionsOptions
+	 *
+	 * @property {Number} [limit=100]
+	 * @property {Number} [offset=0]
+	 */
+	/**
+	 *  Gets the Detections
+	 *
+	 * @param {proxycheck_getDetectionsOptions} options
+	 * @example
+	 * const check = new proxy_check({ api_key: '798999-nc1992-m5507l-v9606u' });
+	 * const result = await check.getDetections({ limit: 50 });
+	 * console.log(result);
+	 * @returns {Object} Result
+	 */
+	async getDetections(options) {
+		if(!options) options = {};
+		if(!options.limit) options.limit = 100;
+		if(!options.offset) options.offset = 0;
+		const url = 'https://proxycheck.io/dashboard/export/detections/?json=1&key=' + this.api_key + '&limit=' + options.limit + '&offset=' + options.offset ;
+		return fetch(url)
+			.then(res => res.json());
+	}
+}
+
+
+/**
+ * @private
+ *
+ * @param {Object} obj
+ * @returns {Object}
+ */
+function convert(obj) {
+	console.log(obj);
+	const result = {};
+	Object.keys(obj).forEach(function(key) {
+		let value = obj[key];
+		if(!isNaN(value)) value = parseInt(value);
+		result[key.replace(/ /g, '_').toLowerCase()] = value;
+
+	});
+	return result;
 }
 module.exports = proxycheck;

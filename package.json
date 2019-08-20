@@ -1,6 +1,6 @@
 {
   "name": "proxycheck-node.js",
-  "version": "1.1.0-a",
+  "version": "2.0.0",
   "description": "https://proxycheck.io/api - for node.js",
   "main": "src/index.js",
   "repository": "https://github.com/PLASMAchicken/proxycheck-node.js",
@@ -11,6 +11,7 @@
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
-    "eslint": "^6.1.0"
+    "eslint": "^6.2.1",
+    "jsdoc-to-markdown": "^5.0.0"
   }
 }
