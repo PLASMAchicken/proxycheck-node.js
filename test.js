@@ -1,6 +1,6 @@
 const test = async () => {
 	const proxy_check = require('.');
-	const check = new proxy_check({ api_key: '798999-nc1992-m5507l-v9606u' });
+	const check = new proxy_check({ api_key: '111111-222222-333333-444444' });
 	const result = await check.getUsage();
 	console.log(result);
 };

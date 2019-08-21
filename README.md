@@ -14,20 +14,20 @@ npm i proxycheck-node.js
 ### async/await
 ```js
 const proxy_check = require('proxycheck-node.js'); 
-const check = new proxy_check({api_key: '798999-nc1992-m5507l-v9606u'}); 
+const check = new proxy_check({api_key: '111111-222222-333333-444444'}); 
 const result = await check.check('127.0.0.1');
 console.log(result)
 ```
 ### .then
 ```js
 const proxy_check = require('proxycheck-node.js'); 
-const check = new proxy_check({api_key: '798999-nc1992-m5507l-v9606u'}); 
+const check = new proxy_check({api_key: '111111-222222-333333-444444'}); 
 const result = check.check('127.0.0.1').then(result => console.log(result));
 ```
 ### async/await with options
 ```js
 const proxy_check = require('proxycheck-node.js'); 
-const check = new proxy_check({api_key: '798999-nc1992-m5507l-v9606u'}); 
+const check = new proxy_check({api_key: '111111-222222-333333-444444'}); 
 const result = await check.check('127.0.0.1', { vpn: true });
 console.log(result)
 ```
@@ -35,7 +35,7 @@ console.log(result)
 ### async/await with options
 ```js
 const proxy_check = require('proxycheck-node.js'); 
-const check = new proxy_check({api_key: '798999-nc1992-m5507l-v9606u'}); 
+const check = new proxy_check({api_key: '111111-222222-333333-444444'}); 
 const result = await check.check(['8.8.8.8', '1.1.1.1'], { vpn: true });
 console.log(result)
 ```
@@ -98,7 +98,7 @@ Get your API Key at [proxycheck.io](http://proxycheck.io/) it's free.
 
 **Example**  
 ```js
-const proxy_check = require('proxycheck-node.js');const check = new proxy_check({api_key: '798999-nc1992-m5507l-v9606u'});
+const proxy_check = require('proxycheck-node.js');const check = new proxy_check({api_key: '111111-222222-333333-444444'});
 ```
 <a name="proxycheck+check"></a>
 
@@ -115,11 +115,11 @@ Checks IP(s) with the proxycheck v2 api.
 
 **Example**  
 ```js
-const check = new proxy_check({api_key: '798999-nc1992-m5507l-v9606u'});const result = await check.check(['8.8.8.8', '1.1.1.1'], { vpn: true });console.log(result)
+const check = new proxy_check({api_key: '111111-222222-333333-444444'});const result = await check.check(['8.8.8.8', '1.1.1.1'], { vpn: true });console.log(result)
 ```
 **Example**  
 ```js
-const check = new proxy_check({api_key: '798999-nc1992-m5507l-v9606u'});const result = check.check('8.8.8.8', { vpn: true }).then(result => console.log(result))
+const check = new proxy_check({api_key: '111111-222222-333333-444444'});const result = check.check('8.8.8.8', { vpn: true }).then(result => console.log(result))
 ```
 <a name="proxycheck+getUsage"></a>
 
@@ -130,7 +130,7 @@ Dashboard: Gets your Usage
 **Returns**: [<code>proxycheck\_getUsageReturn</code>](#proxycheck_getUsageReturn) - Result  
 **Example**  
 ```js
-const check = new proxy_check({ api_key: '798999-nc1992-m5507l-v9606u' });const result = await check.getUsage();console.log(result);
+const check = new proxy_check({ api_key: '111111-222222-333333-444444' });const result = await check.getUsage();console.log(result);
 ```
 <a name="proxycheck+getQuerys"></a>
 
@@ -141,7 +141,7 @@ Dashboard: Gets your Querys
 **Returns**: <code>Object</code> - Result  
 **Example**  
 ```js
-const check = new proxy_check({ api_key: '798999-nc1992-m5507l-v9606u' });const result = await check.getQuerys();console.log(result);
+const check = new proxy_check({ api_key: '111111-222222-333333-444444' });const result = await check.getQuerys();console.log(result);
 ```
 <a name="proxycheck+getDetections"></a>
 
@@ -157,7 +157,7 @@ Gets the Detections
 
 **Example**  
 ```js
-const check = new proxy_check({ api_key: '798999-nc1992-m5507l-v9606u' });const result = await check.getDetections({ limit: 50 });console.log(result);
+const check = new proxy_check({ api_key: '111111-222222-333333-444444' });const result = await check.getDetections({ limit: 50 });console.log(result);
 ```
 <a name="proxycheck_Constructor"></a>
 

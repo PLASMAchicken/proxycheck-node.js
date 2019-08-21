@@ -9,7 +9,7 @@ class proxycheck {
 	/**
 	 * @example
 	 * const proxy_check = require('proxycheck-node.js');
-	 * const check = new proxy_check({api_key: '798999-nc1992-m5507l-v9606u'});
+	 * const check = new proxy_check({api_key: '111111-222222-333333-444444'});
 	 * @param {cmdConstructor} param0 - Constructor.
 	 */
 	constructor({
@@ -39,11 +39,11 @@ class proxycheck {
 	 * @param {String|String[]} ip - Ip to check
 	 * @param {proxycheck_Options} options - Options for the IP_check
 	 * @example
-	 * const check = new proxy_check({api_key: '798999-nc1992-m5507l-v9606u'});
+	 * const check = new proxy_check({api_key: '111111-222222-333333-444444'});
 	 * const result = await check.check(['8.8.8.8', '1.1.1.1'], { vpn: true });
 	 * console.log(result)
 	 * @example
-	 * const check = new proxy_check({api_key: '798999-nc1992-m5507l-v9606u'});
+	 * const check = new proxy_check({api_key: '111111-222222-333333-444444'});
 	 * const result = check.check('8.8.8.8', { vpn: true }).then(result => console.log(result))
 	 * @returns {Object} Command Class.
 	 */
@@ -91,7 +91,7 @@ class proxycheck {
 	/**
 	 * Dashboard: Gets your Usage
 	 * @example
-	 * const check = new proxy_check({ api_key: '798999-nc1992-m5507l-v9606u' });
+	 * const check = new proxy_check({ api_key: '111111-222222-333333-444444' });
 	 * const result = await check.getUsage();
 	 * console.log(result);
 	 * @returns {proxycheck_getUsageReturn} Result
@@ -104,7 +104,7 @@ class proxycheck {
 	/**
 	 * Dashboard: Gets your Querys
 	 * @example
-	 * const check = new proxy_check({ api_key: '798999-nc1992-m5507l-v9606u' });
+	 * const check = new proxy_check({ api_key: '111111-222222-333333-444444' });
 	 * const result = await check.getQuerys();
 	 * console.log(result);
 	 * @returns {Object} Result
@@ -125,7 +125,7 @@ class proxycheck {
 	 *
 	 * @param {proxycheck_getDetectionsOptions} options
 	 * @example
-	 * const check = new proxy_check({ api_key: '798999-nc1992-m5507l-v9606u' });
+	 * const check = new proxy_check({ api_key: '111111-222222-333333-444444' });
 	 * const result = await check.getDetections({ limit: 50 });
 	 * console.log(result);
 	 * @returns {Object} Result
